@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Privacy: Copet and Needling</title>
+<link rel="icon" href="assets/copet-icon.png">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@800;900&family=Figtree:wght@400;600&display=swap">
+<style>
+:root{--ink:#1B1726;--muted:#5C566B;--paper:#FBFAF7;--line:#E6E2EC;color-scheme:light}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.6 "Figtree",system-ui,sans-serif}
+.wrap{max-width:720px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px));padding-block:32px 56px}
+a{color:inherit}
+h1{font:900 40px/1.1 "Nunito",system-ui,sans-serif;margin:18px 0 6px}
+h2{font:800 24px/1.2 "Nunito",system-ui,sans-serif;margin:34px 0 8px}
+p,li{color:var(--ink)}
+.muted{color:var(--muted)}
+ul{padding-left:20px}
+</style>
+</head>
+<body><main class="wrap">
+<a href="./">Back to the apps</a>
+<h1>Privacy</h1>
+<p class="muted">Last updated 9 November 2026. This covers Copet and Needling, both made by Andre Tansil.</p>
+
+<p>Neither app has an account, analytics, ads or tracking. Neither app sends what it reads to me or to anyone else.</p>
+
+<h2>Copet</h2>
+<p>Copet reads these things on your Mac, to decide how the pet reacts:</p>
+<ul>
+  <li>Claude Code's local log files in your home folder, to know when a session finishes or asks you something.</li>
+  <li>What's playing in Apple Music and Spotify, from the announcements those apps make on your Mac.</li>
+  <li>Whether your speakers and microphone are in use.</li>
+  <li>How long since your last key press or mouse movement. It never reads what you type.</li>
+  <li>Calendar and Reminders, only if you switch them on, and macOS asks you first.</li>
+</ul>
+<p>None of this leaves your Mac.</p>
+
+<h2>Needling</h2>
+<p>Needling reads Claude Code's local session files, read only, to show what Claude is doing. To show your usage limits, it sends one tiny message through your own Claude Code, once at setup and about every 5 minutes while you work. That message goes from your Claude Code to Anthropic, like any message you send yourself, and it uses about 600 tokens of Haiku from your own plan. Needling never reads or stores your login. The latest limits are saved on your Mac only. You can turn limit checks off in Settings.</p>
+<p>For a rough Claude Chat status, Needling also looks at when the Claude desktop app saves to its local chat store (file dates only), and, for a short time after a save, how much data that app is receiving (byte counts from macOS's own tools). It never reads your messages or chat names. You can turn this off in Settings.</p>
+<p>Needling is an independent app. It isn't made by or affiliated with Anthropic.</p>
+
+<h2>Payments</h2>
+<p>Purchases are handled by Gumroad, which processes your payment and email under its own privacy policy. I receive your email address and order details from Gumroad so I can help with your purchase and refunds.</p>
+
+<h2>Questions</h2>
+<p>Reply to your Gumroad receipt and it reaches me.</p>
+</main></body>
+</html>

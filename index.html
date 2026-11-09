@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Copet and Needling: small Mac apps by Andre Tansil</title>
+<meta name="description" content="Copet, a tiny cat-bunny for your Mac's top bar, and Needling, your Claude Code status in the MacBook notch. One payment each, nothing sold on your data.">
+<meta property="og:title" content="Copet and Needling: small Mac apps">
+<meta property="og:description" content="A tiny cat-bunny for your top bar, and your Claude Code status in the notch.">
+<meta property="og:image" content="assets/copet-moods.jpg">
+<link rel="icon" href="assets/copet-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=Figtree:wght@400;500;600;700&display=swap">
+<style>
+/* One light look on purpose: each app section wears its own colours from the app's covers. */
+:root{
+  --ink:#1B1726;--muted:#5C566B;--paper:#FBFAF7;--line:#E6E2EC;
+  --copet-bg:#FFC93C;--copet-ink:#2B1F66;--copet-accent:#5D42C7;
+  --needling-bg:#FF6B56;--needling-ink:#170F0E;--needling-mint:#3FE3A8;
+  --display:"Nunito",ui-rounded,"SF Pro Rounded",system-ui,sans-serif;--body:"Figtree",system-ui,-apple-system,sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:400 17px/1.55 var(--body)}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+.wrap{max-width:1080px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+header.top{padding-block:22px}
+header.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font:800 18px var(--display);text-decoration:none}
+nav a{font-weight:600;text-decoration:none;margin-left:18px;font-size:15px}
+nav a:hover{text-decoration:underline}
+.intro{padding-block:28px 40px}
+.intro h1{font:900 clamp(34px,6vw,60px)/1.02 var(--display);letter-spacing:-.02em;margin:0;max-width:16ch;text-wrap:balance}
+.intro p{color:var(--muted);font-size:19px;max-width:52ch;margin:16px 0 0}
+.app{padding-block:56px}
+.app .wrap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);gap:44px;align-items:center}
+.app.copet{background:var(--copet-bg);color:var(--copet-ink)}
+.app.needling{background:var(--needling-bg);color:var(--needling-ink)}
+.app.needling .wrap{grid-template-columns:minmax(0,1.05fr) minmax(0,1fr)}
+.app.needling .media{order:-1}
+.name{display:flex;align-items:center;gap:14px}
+.name img{width:64px;height:64px;border-radius:15px;box-shadow:0 6px 18px rgba(0,0,0,.18)}
+.name h2{font:900 44px/1 var(--display);margin:0;letter-spacing:-.02em}
+.tag{font:800 24px/1.2 var(--display);margin:18px 0 0;max-width:22ch;text-wrap:balance}
+ul.moods{list-style:none;padding:0;margin:22px 0 0;display:grid;gap:9px}
+ul.moods li{display:grid;grid-template-columns:118px minmax(0,1fr);gap:10px;font-size:16px}
+ul.moods b{font:800 16px var(--display)}
+.media video{width:100%;border-radius:18px;box-shadow:0 18px 40px rgba(0,0,0,.18);background:#000;aspect-ratio:16/9;object-fit:cover}
+.buy{margin-top:26px;display:grid;gap:10px;justify-items:start}
+.price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.price s{opacity:.6;font-size:18px}
+.price b{font:900 34px/1 var(--display)}
+.price span{font-size:15px;font-weight:600}
+.btn{display:inline-block;text-decoration:none;font:800 18px var(--display);padding:13px 22px;border-radius:14px}
+.copet .btn{background:var(--copet-accent);color:#fff}
+.needling .btn{background:var(--needling-ink);color:#fff}
+.btn:focus-visible{outline:3px solid currentColor;outline-offset:3px}
+.fine{font-size:14px;opacity:.85;max-width:52ch}
+.soon{font:800 18px var(--display);padding:12px 18px;border-radius:14px;border:2px solid currentColor;display:inline-block}
+.trust{padding-block:56px}
+.trust h2{font:900 34px/1.1 var(--display);margin:0;letter-spacing:-.01em}
+.cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:22px;margin-top:22px}
+.cols div{background:#fff;border:1px solid var(--line);border-radius:16px;padding:18px 20px}
+.cols h3{font:800 19px var(--display);margin:0 0 6px}
+.cols p{margin:0;color:var(--muted);font-size:16px}
+footer{border-top:1px solid var(--line);padding-block:28px 40px;color:var(--muted);font-size:15px}
+footer .wrap{display:flex;gap:10px 22px;flex-wrap:wrap;justify-content:space-between}
+@media (max-width:820px){
+  .app .wrap,.app.needling .wrap{grid-template-columns:minmax(0,1fr);gap:28px}
+  .app.needling .media{order:0}
+  ul.moods li{grid-template-columns:96px minmax(0,1fr)}
+  nav a{margin-left:12px}
+}
+@media (prefers-reduced-motion:reduce){video{animation:none}}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <a class="brand" href="./">Andre Tansil · Mac apps</a>
+  <nav><a href="#copet">Copet</a><a href="#needling">Needling</a><a href="privacy.html">Privacy</a></nav>
+</div></header>
+
+<main>
+  <section class="intro wrap">
+    <h1>Two small Mac apps that keep you company while you work.</h1>
+    <p>One hangs from your top bar and reacts to your day. One lives around your MacBook notch and tells you when Claude Code needs you. One payment each, and nothing they read leaves your Mac.</p>
+  </section>
+
+  <section class="app copet" id="copet">
+    <div class="wrap">
+      <div>
+        <div class="name"><img src="assets/copet-icon.png" alt="" width="64" height="64"><h2>Copet</h2></div>
+        <p class="tag">A tiny cat-bunny that hangs from your top bar and reacts to your day.</p>
+        <ul class="moods">
+          <li><b>Happy</b><span>a Claude Code session finishes</span></li>
+          <li><b>Panic</b><span>Claude asks you something, or a meeting starts in 5 minutes</span></li>
+          <li><b>Dancing</b><span>Apple Music or Spotify is playing</span></li>
+          <li><b>Asleep</b><span>you're focusing, or you've been away</span></li>
+          <li><b>Needs a pet</b><span>an hour without a break</span></li>
+        </ul>
+        <div class="buy">
+          <div class="price"><s>$9.67</s><b>$4.78</b><span>launch price until 30 Nov</span></div>
+          <a class="btn" href="https://andretan0.gumroad.com/l/btdicz">Get Copet</a>
+          <p class="fine">One payment. 30-day refund if it isn't for you. macOS 14 or newer, Apple Silicon and Intel. It stays where you put it, and it doesn't walk across your screen.</p>
+        </div>
+      </div>
+      <div class="media"><video src="assets/copet-loop.mp4" poster="assets/copet-moods.jpg" autoplay muted loop playsinline aria-label="Copet reacting: happy, music, a meeting, focus"></video></div>
+    </div>
+  </section>
+
+  <section class="app needling" id="needling">
+    <div class="wrap">
+      <div>
+        <div class="name"><img src="assets/needling-icon.png" alt="" width="64" height="64"><h2>Needling</h2></div>
+        <p class="tag">Your Claude Code status, in your MacBook notch.</p>
+        <ul class="moods">
+          <li><b>Eyes</b><span>two thin eyes show what Claude Code is doing</span></li>
+          <li><b>Bars</b><span>your 5-hour and weekly limits, with reset times</span></li>
+          <li><b>Needs you</b><span>it needles you when Claude is waiting, so you can walk away</span></li>
+        </ul>
+        <div class="buy" id="needlingBuy">
+          <span class="soon">Coming soon</span>
+          <p class="fine">For Claude Code with a Pro or Max plan. Apple Silicon, macOS 13 or newer. Needling reads your limits by sending one tiny message through your own Claude Code about every 5 minutes while you work. It never touches your login. It's an independent app, not made or endorsed by Anthropic.</p>
+        </div>
+      </div>
+      <div class="media"><video src="assets/needling-loop.mp4" poster="assets/needling-limits.jpg" autoplay muted loop playsinline aria-label="Needling in the notch showing Claude Code status"></video></div>
+    </div>
+  </section>
+
+  <section class="trust wrap">
+    <h2>Before you buy</h2>
+    <div class="cols">
+      <div><h3>Nothing leaves your Mac</h3><p>Both apps read only local things, such as Claude Code's own log files and what's playing. They have no accounts, no tracking and no analytics. <a href="privacy.html">Full privacy note</a>.</p></div>
+      <div><h3>Your Mac may warn you once</h3><p>The apps aren't registered with Apple yet, so the first open shows a warning. Click Done, then System Settings, Privacy &amp; Security, Open Anyway. The steps are in the download.</p></div>
+      <div><h3>30-day refund</h3><p>If it doesn't work on your Mac, or it just isn't for you, reply to your Gumroad receipt within 30 days for a full refund.</p></div>
+    </div>
+  </section>
+</main>
+
+<footer><div class="wrap">
+  <span>Made by Andre Tansil in Indonesia. Payments by Gumroad.</span>
+  <span><a href="privacy.html">Privacy</a></span>
+</div></footer>
+<script>
+/* Set to true once Needling is published on Gumroad. */
+const NEEDLING_LIVE=true;
+if(NEEDLING_LIVE){document.getElementById("needlingBuy").insertAdjacentHTML("afterbegin",'<div class="price"><s>$9.67</s><b>$4.78</b><span>launch price until 30 Nov</span></div><a class="btn" href="https://andretan0.gumroad.com/l/leqnw">Get Needling</a>');document.querySelector("#needlingBuy .soon").remove()}
+</script>
+</body>
+</html>
